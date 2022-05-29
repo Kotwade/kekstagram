@@ -1,3 +1,5 @@
+import { request } from './fetch.js';
+import { showError, showSuccess } from './alerts.js';
 import {effectLevel, lastClass} from './effects.js';
 
 const Keys = {
@@ -82,3 +84,25 @@ buttonMinus.addEventListener('click', () => {
   scale = scale / 100;
   imagePreview.style.transform = 'scale(' + scale + ')';
 });
+
+const uploadForm = document.querySelector('.img-upload__form');
+
+const onSuccess = () => {
+  showSuccess('Ура!')
+  closeModal();
+  uploadForm.reset();
+}
+
+const onError = () => {
+  showError('ЧТо-то пошло не так', 'Загрузить другой файл');
+}
+
+
+uploadForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
+  request(onSuccess, onError, 'POST', new FormData(evt.target))
+})
+
+export { closeModal };
+

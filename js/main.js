@@ -1,6 +1,16 @@
+import { renderPhotos } from './preview.js';
+import { request } from './fetch.js';
+import { showError } from './alerts.js';
 import './editor.js';
 import './effects.js';
 import './validation.js';
-import { renderPhotos } from './preview.js';
 
-renderPhotos();
+const onSuccess = (data) => {
+  renderPhotos(data.slice())
+};
+
+const onError = () => {
+  showError('Ошибка загрузки, попробуйте еще раз', 'Закрыть')
+};
+
+request(onSuccess, onError, 'GET');

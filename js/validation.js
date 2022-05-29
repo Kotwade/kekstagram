@@ -58,14 +58,14 @@ inputHashtag.addEventListener('input', () => {
   if (inputArray.length > MAX_HASHTAGS) {
     inputHashtag.setCustomValidity('Максимум 5 хэш-тегов');
   }
-})
+});
 
 const onEscapeDown = (evt) => {
   if (evt.key === ('Escape' || 'Esc')) {
     evt.preventDefault();
     evt.stopPropagation();
   }
-}
+};
 
-inputHashtag.addEventListener('keydown', onEscapeDown)
-inputComment.addEventListener('keydown', onEscapeDown)
+inputHashtag.addEventListener('keydown', onEscapeDown);
+inputComment.addEventListener('keydown', onEscapeDown);

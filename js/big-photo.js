@@ -1,3 +1,4 @@
+import { checkEsc } from './util.js';
 const bigPicture = document.querySelector('.big-picture');
 const scrollOff = document.querySelector('body');
 const bigPictureClose = bigPicture.querySelector('.big-picture__cancel');
@@ -37,6 +38,13 @@ const renderComments = (comments) => {
   commentList.appendChild(commentsListFragment);
 };
 
+
+const onBigPictureEscKeyDown = (evt) => {
+  if (checkEsc(evt)) {
+    onBigPictureCloseClick()
+  }
+};
+
 const show = (picture) => {
   scrollOff.classList.add('modal-open');
   bigPicture.querySelector('.big-picture__img > img').src = picture.url;
@@ -45,6 +53,7 @@ const show = (picture) => {
   bigPicture.querySelector('.social__caption').textContent = picture.description;
 
   bigPictureClose.addEventListener('click', onBigPictureCloseClick);
+  document.addEventListener('keydown', onBigPictureEscKeyDown);
   renderComments(picture.comments);
   bigPicture.classList.remove('hidden');
 };
