@@ -5,6 +5,7 @@ import { shuffleArray, debounce } from './util.js';
 import './editor.js';
 import './effects.js';
 import './validation.js';
+import './load-image.js';
 
 const DEFAULT_PREVIEW_LOAD = 25;
 const RANDOM_PREVIEW_LOAD = 10;
